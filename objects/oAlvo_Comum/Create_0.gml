@@ -81,6 +81,8 @@ colide_tiro = function()
         //fazendo eu perder vida
        vida -= _dano_recebido;
        oScreenshake.treme = 10
+        audio_play_sound(snd_dano, 1, 0)
+        //toda vez que o tiro pega faz o som de dano
         //destruindo o meu tiro
        instance_destroy(_colidir_tiro);
        //Chamando o efeito de mola 

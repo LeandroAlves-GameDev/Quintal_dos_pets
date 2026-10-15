@@ -36,6 +36,8 @@ atirando = function()
     //se eu apertei o lado esquerdo do mouse
     if(atira)
     {
+        //rodando o som do tiro
+        audio_play_sound(snd_tiro, 1, 0)
         //quando eu atiro eu tambem aplico o screenshake
         oScreenshake.treme = 5;
         var pos_x = x + lengthdir_x(20, image_angle)
