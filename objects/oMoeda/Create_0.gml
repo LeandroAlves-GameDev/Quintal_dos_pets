@@ -12,6 +12,9 @@ alvo = oGato;
 //Criando uma variavel de rang
 range = 150;
 
+//Criando um sistema de tempo para que minha moeda fique na room
+tempo_vida = 0;
+tempo_max_vida = 300;
 
 #endregion
 
@@ -64,6 +67,20 @@ colide_player = function()
         //roda o som da moeda
         audio_play_sound(snd_moedas, 1, 0);
         //destruindo a moeda
+        instance_destroy();
+    }
+}
+
+//Criando um metodo pra destruir a moeda caso eu não pegue ela
+destroi_moeda = function()
+{
+    //ganhando tempo pra moeda
+    tempo_vida++;
+    //conforme eu ganho tempo vida ele faz com que a divisão se aproxime de 1, assim o alpha da moeda vai
+    //diminuindo
+    image_alpha = 1 - (tempo_vida / tempo_max_vida);
+    if(tempo_vida >= tempo_max_vida)
+    {
         instance_destroy();
     }
 }

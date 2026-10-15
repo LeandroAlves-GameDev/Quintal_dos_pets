@@ -4,6 +4,7 @@ segue_player();
 //chamando o metodo de colisão
 colide_player();
 
+destroi_moeda();
 
 segue_loja();
 

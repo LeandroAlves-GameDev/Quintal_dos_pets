@@ -1,6 +1,13 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
 
+
+//criando variaveis
+cooldown = 0;
+//fazendo o nosso sistema de cooldown da arma
+cooldown_max = 30;
+
+
 #region Metodos
 
 //Criando o metodo de mirar
@@ -34,8 +41,12 @@ atirando = function()
     //criando o sistema tiro 
     atira = mouse_check_button_pressed(mb_left)
     //se eu apertei o lado esquerdo do mouse
-    if(atira)
+    cooldown++;
+    //ganhando cooldown
+    if(atira && cooldown >= cooldown_max)
     {
+        //resetando o cooldown e fazendo todo o resto acontencer
+        cooldown = 0;
         //rodando o som do tiro
         audio_play_sound(snd_tiro, 1, 0)
         //quando eu atiro eu tambem aplico o screenshake
