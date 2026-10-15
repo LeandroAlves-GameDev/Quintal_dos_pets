@@ -1,0 +1,97 @@
+/// @description Inserir descrição aqui
+// Você pode escrever seu código neste editor
+
+#region Variaveis
+
+//Criando o sistema de moeda
+//dando uma velocidade para a moeda
+vel = 3;
+//Criando uma variavel de alvo pro player
+alvo = oGato;
+
+//Criando uma variavel de rang
+range = 150;
+
+
+#endregion
+
+#region Metodo
+
+//Criando o metodo de ir até o player
+segue_player = function()
+{
+    //blindando o codigo
+    if(room == rm_quintal)
+    {
+        vel = 0;
+        return;
+    }
+    
+    //ele vai verificar a distancia entre meu objeto moeda com o player se maior que o raio
+    var localiza_player = point_distance(x, y, oGato.x, oGato.y) <= range
+    if(localiza_player)
+    {
+        //se for maior então ele fará com que o objeto se mova até o alvo
+        move_towards_point(alvo.x, alvo.y, vel)
+    }
+}
+
+//Criando o metodo de colisão com o player
+colide_player = function()
+{
+    //blindando o codigo
+    if(room == rm_quintal)
+    {
+        vel = 0;
+        return;
+    }
+    var acerta_player = instance_place(x, y, oGato)
+    //verificando se ele colidiu com o objeto gato
+    if(acerta_player != noone)
+    {
+        //se ele colidiu com o objeto gato
+        with (acerta_player)
+        {
+            //então será aplicado o efeito brilho dentro do objeto
+            //chamando o metodo aplica brilho no gato
+            aplica_brilho(c_white, 2);
+        }
+        //se ele confirmou a colisão com o player
+        //então eu ganho um ponto
+        global.pontos += 1;
+        
+        //toda vez que ele tocar no player e for pego
+        //roda o som da moeda
+        audio_play_sound(snd_moedas, 1, 0);
+        //destruindo a moeda
+        instance_destroy();
+    }
+}
+
+segue_loja = function()
+{
+    if (instance_exists(oLoja))
+    {
+        // Verifica a distância até a loja
+        var distancia_loja = point_distance(x, y, oLoja.x, oLoja.y);
+        
+        // Se estiver perto o suficiente da loja, ela é puxada para o centro dela
+        if (distancia_loja > 5)
+        {
+            move_towards_point(oLoja.x, oLoja.y, 4); // Velocidade que ela voa para a loja
+        }
+        else
+        {
+            // Quando encosta na loja, a loja "absorve" a moeda!
+            vel = 0;
+            
+            // Adiciona 1 moeda na carteira de upgrades do jogador (ex: global.moedas_loja)
+            global.moedas_loja += 1;
+            
+            // Destroi a moeda física
+            instance_destroy();
+        }
+    }
+}
+
+#endregion
