@@ -2,24 +2,24 @@
   "$GMSprite":"v2",
   "%Name":"spr_transporte_upgrades",
   "bboxMode":0,
-  "bbox_bottom":63,
-  "bbox_left":0,
-  "bbox_right":63,
-  "bbox_top":0,
+  "bbox_bottom":62,
+  "bbox_left":1,
+  "bbox_right":44,
+  "bbox_top":4,
   "collisionKind":1,
   "collisionTolerance":0,
   "DynamicTexturePage":false,
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"v1","%Name":"b0f98ce4-f9fd-4a92-ad96-9db0311a2b0e","name":"b0f98ce4-f9fd-4a92-ad96-9db0311a2b0e","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"322a78d1-55c2-47d3-9580-2212eae81a58","name":"322a78d1-55c2-47d3-9580-2212eae81a58","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
   "height":64,
   "HTile":false,
   "layers":[
-    {"$GMImageLayer":"","%Name":"db1acd9c-0395-4f7c-8c5d-c69d3a8a5585","blendMode":0,"displayName":"default","isLocked":false,"name":"db1acd9c-0395-4f7c-8c5d-c69d3a8a5585","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"f4ee436b-7f5d-4cb6-91b5-4ca44d73faf3","blendMode":0,"displayName":"default","isLocked":false,"name":"f4ee436b-7f5d-4cb6-91b5-4ca44d73faf3","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
   "name":"spr_transporte_upgrades",
   "nineSlice":null,
@@ -69,8 +69,8 @@
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"b0f98ce4-f9fd-4a92-ad96-9db0311a2b0e","path":"sprites/spr_transporte_upgrades/spr_transporte_upgrades.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"f7eb4245-ec18-4f16-9010-cc4002709d0f","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"322a78d1-55c2-47d3-9580-2212eae81a58","path":"sprites/spr_transporte_upgrades/spr_transporte_upgrades.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"ad507255-6b33-4395-b534-b52ec6e9f807","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,
@@ -86,5 +86,5 @@
   },
   "type":0,
   "VTile":false,
-  "width":64,
+  "width":48,
 }

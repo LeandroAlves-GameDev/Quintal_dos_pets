@@ -7,6 +7,9 @@ cooldown = 0;
 //fazendo o nosso sistema de cooldown da arma
 cooldown_max = 30;
 
+//criando um sistema de recoil para nosso jogo
+recoil_dist = 0;
+//por padrão começa zerado
 
 #region Metodos
 
@@ -42,6 +45,7 @@ atirando = function()
     atira = mouse_check_button_pressed(mb_left)
     //se eu apertei o lado esquerdo do mouse
     cooldown++;
+    
     //ganhando cooldown
     if(atira && cooldown >= cooldown_max)
     {
@@ -49,6 +53,19 @@ atirando = function()
         cooldown = 0;
         //rodando o som do tiro
         audio_play_sound(snd_tiro, 1, 0)
+        
+        //quando eu atiro eu ganho recoil 
+        recoil_dist = 5;
+        with (oGato) 
+        {
+            //dentro do gato 
+            //ele vai somar x += o lengthdir_x que vai calcular o valor de retorno
+            //ou seja o valor de desloque
+            //mais o angulo, então o calculo seria x + minha direção e com isso teremos um sistema de recoil
+        	x += lengthdir_x(5, other.image_angle + 180);
+            y += lengthdir_y(5, other.image_angle + 180);
+            
+        }
         //quando eu atiro eu tambem aplico o screenshake
         oScreenshake.treme = 5;
         var pos_x = x + lengthdir_x(20, image_angle)
@@ -59,6 +76,7 @@ atirando = function()
         //criando a minha instancia do tiro
         cria_bala.image_angle = image_angle;
     }
+    recoil_dist = lerp(recoil_dist, 0, 0.1);
 }
 
 

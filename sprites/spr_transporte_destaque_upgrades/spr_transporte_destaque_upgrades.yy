@@ -2,24 +2,24 @@
   "$GMSprite":"v2",
   "%Name":"spr_transporte_destaque_upgrades",
   "bboxMode":0,
-  "bbox_bottom":64,
+  "bbox_bottom":63,
   "bbox_left":0,
-  "bbox_right":64,
-  "bbox_top":0,
+  "bbox_right":45,
+  "bbox_top":3,
   "collisionKind":1,
   "collisionTolerance":0,
   "DynamicTexturePage":false,
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"v1","%Name":"b0f98ce4-f9fd-4a92-ad96-9db0311a2b0e","name":"b0f98ce4-f9fd-4a92-ad96-9db0311a2b0e","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"78695e91-2c98-4c76-a1c5-11ebb9662202","name":"78695e91-2c98-4c76-a1c5-11ebb9662202","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
-  "height":65,
+  "height":64,
   "HTile":false,
   "layers":[
-    {"$GMImageLayer":"","%Name":"db1acd9c-0395-4f7c-8c5d-c69d3a8a5585","blendMode":0,"displayName":"default","isLocked":false,"name":"db1acd9c-0395-4f7c-8c5d-c69d3a8a5585","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"80744ed7-a338-4e7d-8368-59a5d6e02c7f","blendMode":0,"displayName":"default","isLocked":false,"name":"80744ed7-a338-4e7d-8368-59a5d6e02c7f","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
   "name":"spr_transporte_destaque_upgrades",
   "nineSlice":null,
@@ -69,8 +69,8 @@
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"b0f98ce4-f9fd-4a92-ad96-9db0311a2b0e","path":"sprites/spr_transporte_destaque_upgrades/spr_transporte_destaque_upgrades.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"f7eb4245-ec18-4f16-9010-cc4002709d0f","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"78695e91-2c98-4c76-a1c5-11ebb9662202","path":"sprites/spr_transporte_destaque_upgrades/spr_transporte_destaque_upgrades.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"86fca49e-a5d7-42cc-bff6-8b6260760c63","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,
@@ -86,5 +86,5 @@
   },
   "type":0,
   "VTile":false,
-  "width":65,
+  "width":48,
 }

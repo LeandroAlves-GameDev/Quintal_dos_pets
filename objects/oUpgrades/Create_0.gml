@@ -9,6 +9,9 @@ inicia_efeito_mola();
 sem_pai = noone;
 linha_tamanho = 0;
 
+//criando um sistema de feedback melhorado
+mouse_ta_acima = false;
+
 
 if (variable_struct_exists(global.upgrades, id_upgrade))
 {
@@ -21,9 +24,22 @@ mouse_acima = function()
     var _mouse_acima = position_meeting(mouse_x, mouse_y, id);
     var _click_mouse = mouse_check_button_pressed(mb_left);
     
+    //rodando um if para rodar o efeito
+    if(_mouse_acima && !mouse_ta_acima)
+    {
+        //se meu mouse estiver acima e se mouse ta acima for true
+        efeito_mola(1.5, 1.5);
+        //ele roda o efeito da mola
+    }
+    mouse_estava_acima = _mouse_acima;
+    
     if (_mouse_acima && _click_mouse)
     {
-        
+        if (!ativo)
+        {
+            show_debug_message("Esta habilidade ainda não está desbloqueada na árvore!");
+            exit;
+        }
         if (level >= max_level)
         {
             show_message("Esta habilidade já está no nível máximo!");
@@ -40,9 +56,6 @@ mouse_acima = function()
             
             // 2. Aumenta o nível local
             level += 1;
-            
-            // 3. Efeito visual e log
-            efeito_mola(1.5, 1.5);
             show_message("Comprado! Nível atual: " + string(level));
             
             variable_struct_set(global.upgrades, id_upgrade, level);
@@ -85,12 +98,13 @@ desenha_linha = function()
         var _dir = point_direction(sem_pai.x, sem_pai.y, x, y)
         
         //pegando as coordenas do sem pai
-        var x1 = sem_pai.x + lengthdir_x(32, _dir);
-        var y1 = sem_pai.y + lengthdir_y(32, _dir);
-        var x2 = sem_pai.x + lengthdir_x(linha_tamanho - 32, _dir);
-        var y2 = sem_pai.y + lengthdir_y(linha_tamanho - 32, _dir);
+        var x1 = sem_pai.x + lengthdir_x(16, _dir);
+        var y1 = sem_pai.y + lengthdir_y(16, _dir);
+        var x2 = sem_pai.x + lengthdir_x(linha_tamanho - 16, _dir);
+        var y2 = sem_pai.y + lengthdir_y(linha_tamanho - 16, _dir);
         
-        draw_line_width_colour(x1, y1, x2, y2, 6, sem_pai.image_blend, image_blend);
+        draw_line_width_colour(x1, y1, x2, y2, 4, sem_pai.image_blend, image_blend);
+        depth = -10
     }
     if(instance_exists(sem_pai))
     {

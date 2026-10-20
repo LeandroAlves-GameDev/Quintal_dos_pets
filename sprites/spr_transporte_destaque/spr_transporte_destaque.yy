@@ -1,10 +1,10 @@
 {
   "$GMSprite":"v2",
   "%Name":"spr_transporte_destaque",
-  "bboxMode":0,
-  "bbox_bottom":64,
+  "bboxMode":2,
+  "bbox_bottom":27,
   "bbox_left":0,
-  "bbox_right":64,
+  "bbox_right":30,
   "bbox_top":0,
   "collisionKind":1,
   "collisionTolerance":0,
@@ -12,14 +12,14 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"v1","%Name":"b0f98ce4-f9fd-4a92-ad96-9db0311a2b0e","name":"b0f98ce4-f9fd-4a92-ad96-9db0311a2b0e","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"955573df-224d-4836-b383-560a1a3e3761","name":"955573df-224d-4836-b383-560a1a3e3761","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
-  "height":65,
+  "height":28,
   "HTile":false,
   "layers":[
-    {"$GMImageLayer":"","%Name":"db1acd9c-0395-4f7c-8c5d-c69d3a8a5585","blendMode":0,"displayName":"default","isLocked":false,"name":"db1acd9c-0395-4f7c-8c5d-c69d3a8a5585","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"153d7c14-bf87-4195-bcf1-476fa2183681","blendMode":0,"displayName":"default","isLocked":false,"name":"153d7c14-bf87-4195-bcf1-476fa2183681","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
   "name":"spr_transporte_destaque",
   "nineSlice":null,
@@ -69,8 +69,8 @@
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"b0f98ce4-f9fd-4a92-ad96-9db0311a2b0e","path":"sprites/spr_transporte_destaque/spr_transporte_destaque.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"f7eb4245-ec18-4f16-9010-cc4002709d0f","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"955573df-224d-4836-b383-560a1a3e3761","path":"sprites/spr_transporte_destaque/spr_transporte_destaque.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"34f63cca-d80c-42f1-975a-9c4264d2e325","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,
@@ -86,5 +86,5 @@
   },
   "type":0,
   "VTile":false,
-  "width":65,
+  "width":31,
 }

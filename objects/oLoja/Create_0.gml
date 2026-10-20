@@ -27,7 +27,7 @@ gato_perto = function()
 
     //se a distancia for menor que 50
 
-    if(point_distance(x, y, oGato.x, oGato.y) < 35 && oGato.y >= (y - 10))
+    if(point_distance(x, y, oGato.x, oGato.y) < 55 && oGato.y >= (y - 10))
 
     {
 

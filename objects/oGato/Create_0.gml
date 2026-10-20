@@ -32,7 +32,7 @@ _layer = layer_tilemap_get_id("tl_detalhes")
 
 
 //Criando uma variavel que armazena uma array list
-colisoes = [oLoja, oCerca, oCerca_lateral, _layer]
+colisoes = [oLoja, oCerca, oCerca_lateral, _layer, oTransporte]
 
 //Criando uma variavel para ver se posso criar a arma
 crio_arma = false;
@@ -171,7 +171,7 @@ estado_parado = function()
         //rodando um debug para ver se estou me movendo
         //show_message("Estou ando para cima ou baixo" + string(estado))
     }
-    if(instance_exists(oLoja) && point_distance(x, y, oLoja.x, oLoja.y) < 35 && select)
+    if(instance_exists(oLoja) && point_distance(x, y, oLoja.x, oLoja.y) < 55 && select)
     {
         //se minha instancia loja existe e eu estou dentro do raio de alcançe da loja
         //e apertei o botão select
@@ -219,7 +219,7 @@ estado_movendo = function()
         //rodando um debug para ver se estou me movendo
         //show_message("Parei" + string(estado))
     }
-    if(instance_exists(oLoja) && point_distance(x, y, oLoja.x, oLoja.y) < 35 && select)
+    if(instance_exists(oLoja) && point_distance(x, y, oLoja.x, oLoja.y) < 55 && select)
     {
         //se minha instancia loja existe e eu estou dentro do raio de alcançe da loja
         //e apertei o botão select
