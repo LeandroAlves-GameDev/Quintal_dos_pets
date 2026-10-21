@@ -31,5 +31,7 @@ global.upgrades =
     tempo1: 0,
     tempo2: 0,
     tempo3: 0,
-    tempo4: 0
+    tempo4: 0,
+    
+    inicio: 0
 }

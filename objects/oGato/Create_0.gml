@@ -1,6 +1,17 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
 
+//criando os amiguinhos 
+var _total_amigos = calcula_amigos();
+
+//o jogador já comprou o "Início" (_total_amigos maior que 0), criamos os amiguinhos
+for (var i = 0; i < _total_amigos; i++)
+{
+    //Criamos o amiguinho na mesma posição do gato
+    instance_create_layer(x, y, "Player", oAumiguinho);
+}
+
+
 inicia_efeito_brilho();
 
 //Criando uma region para melhorar o codigo
@@ -97,7 +108,27 @@ gato_move = function()
         //então a sprite passa a andar para a esquerda
         image_xscale = -1;
     }
-    
+    //criando um if para mudar a posição da room ao sair dela
+    if(x > room_width)
+    {
+        //se meu x for maior que a room largura
+        //então X passa a ser 0
+        x = 0;
+    }
+    if(x < 0)
+    {
+        //se meu x for menor que zero
+        x = room_width;
+        //meu x passa a ser a largura da room
+    }
+    if(y > room_height)
+    {
+        y = 0;
+    }
+    if(y < 0)
+    {
+        y = room_height;
+    }
 }
 
 //Criando o metodo de colisão
@@ -128,6 +159,7 @@ colisoes_metodo = function()
         }
     }
 }
+
 
 //Criando o metodo de segurar a arma
 segura_arma = function()

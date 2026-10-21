@@ -52,7 +52,7 @@ atirando = function()
         //resetando o cooldown e fazendo todo o resto acontencer
         cooldown = 0;
         //rodando o som do tiro
-        audio_play_sound(snd_tiro, 1, 0)
+        audio_play_sound(snd_tiro2, 1, 0)
         
         //quando eu atiro eu ganho recoil 
         recoil_dist = 5;

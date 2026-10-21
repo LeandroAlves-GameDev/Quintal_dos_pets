@@ -61,3 +61,17 @@ function calcula_dano_tiro()
     
     return _dano_base + _bonus;
 }
+
+function calcula_amigos()
+{
+    var _base_amigos = 0; // Começa com 0 amiguinhos se não comprou o "Início"
+    var _bonus = 0;
+    
+    // Verifica se a propriedade "inicio" existe na struct e soma o valor dela
+    if (variable_struct_exists(global.upgrades, "inicio")) 
+    {
+        _bonus += global.upgrades.inicio; // Se comprou (ex: 1), adiciona 1 amiguinho
+    }
+    
+    return _base_amigos + _bonus;
+}
