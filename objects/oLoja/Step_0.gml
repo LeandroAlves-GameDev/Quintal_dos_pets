@@ -3,4 +3,4 @@
 gato_perto()
 
 
-depth = -y;
+//depth = -y;

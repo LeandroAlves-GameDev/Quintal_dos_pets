@@ -1,6 +1,9 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
 
+transicionando = false;
+minha_sequence = noone;
+
 
 //Criando um metodo para a troca de sprite ser melhor
 muda_sprite = function(spr = spr_transporte_upgrades)
@@ -30,15 +33,17 @@ gato_perto = function()
        {
            //então a sprite mudará para o spr_loja_destaque
            muda_sprite(spr_transporte_destaque_upgrades);
-           if(oGato.select)
-           {
-                show_debug_message("A MUDAR PARA A ROOM ARVORE A PARTIR DO TRANSPORTE DE UPGRADES!");
-               //se eu apertei select ou seja eu interagi então eu vou para a room combate
-                room_goto(rm_arvore)
-                keyboard_clear(ord("E"));
-                show_debug_message("Room atual: " + room_get_name(room));
-                exit;
-           }
+           //se eu apertei o select com o gato 
+            if(oGato.select && !transicionando)
+            {
+                transicionando = true;
+                
+                //rodando o sistema de transição de room
+                minha_sequence = layer_sequence_create("sq_transicao", x, y, sq_transicao)
+                //criando a minha sequencia
+                
+              
+            }
        }
        else
        {
@@ -47,4 +52,18 @@ gato_perto = function()
        }
     }
        
+}
+
+
+
+checar_transicao = function()
+{
+    if (transicionando && layer_sequence_exists("sq_transicao", minha_sequence))
+    {
+        if (layer_sequence_is_finished(minha_sequence))
+        {
+           
+            room_goto(rm_arvore);
+        }
+    }
 }

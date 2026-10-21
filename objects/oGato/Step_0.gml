@@ -17,4 +17,4 @@ retorna_efeito_brilho()
 velh_max = calcula_velocidade();
 velv_max = calcula_velocidade();
 
-depth = -y;
+//depth = -y;

@@ -75,6 +75,7 @@
     {"name":"spr_mira","order":25,"path":"sprites/spr_mira/spr_mira.yy",},
     {"name":"spr_tile_quintal","order":1,"path":"sprites/spr_tile_quintal/spr_tile_quintal.yy",},
     {"name":"spr_tiro","order":5,"path":"sprites/spr_tiro/spr_tiro.yy",},
+    {"name":"spr_transicao","order":26,"path":"sprites/spr_transicao/spr_transicao.yy",},
     {"name":"spr_transporte_destaque_upgrades","order":19,"path":"sprites/spr_transporte_destaque_upgrades/spr_transporte_destaque_upgrades.yy",},
     {"name":"spr_transporte_destaque","order":7,"path":"sprites/spr_transporte_destaque/spr_transporte_destaque.yy",},
     {"name":"spr_transporte_upgrades","order":18,"path":"sprites/spr_transporte_upgrades/spr_transporte_upgrades.yy",},
