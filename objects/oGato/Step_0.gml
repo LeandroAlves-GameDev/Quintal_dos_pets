@@ -6,13 +6,14 @@ estado();
 
 //chamando o metodo de colisão direto no step não dentro do metodo gato_move pois daria bug na animação
 //ficaria trocando entra muda sprite parado e movendo rapidamente
-colisoes_metodo()
+colisoes_metodo();
 
-cata_inputs()
+cata_inputs();
 
-gato_move()
+gato_move();
 
-retorna_efeito_brilho()
+
+retorna_efeito_brilho();
 
 velh_max = calcula_velocidade();
 velv_max = calcula_velocidade();

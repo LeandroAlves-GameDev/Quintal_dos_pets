@@ -82,6 +82,11 @@ segura_arma = function()
     var cria_arma = instance_create_layer(oAumiguinho.x, oAumiguinho.y + 5, "Arma", oGun_osso)
 }
 
+//desenhando o efeito de sombre
+desenha_sombra = function()
+{
+    draw_sprite(spr_sombra, 1, x, y)
+}
 
 
 executa_colisoes = function()

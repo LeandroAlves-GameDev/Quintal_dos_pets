@@ -108,26 +108,29 @@ gato_move = function()
         //então a sprite passa a andar para a esquerda
         image_xscale = -1;
     }
-    //criando um if para mudar a posição da room ao sair dela
-    if(x > room_width)
-    {
-        //se meu x for maior que a room largura
-        //então X passa a ser 0
-        x = 0;
-    }
-    if(x < 0)
-    {
-        //se meu x for menor que zero
-        x = room_width;
-        //meu x passa a ser a largura da room
-    }
-    if(y > room_height)
-    {
-        y = 0;
-    }
-    if(y < 0)
-    {
-        y = room_height;
+    if(room == rm_combate)
+    { 
+       //criando um if para mudar a posição da room ao sair dela
+       if(x > room_width)
+       {
+           //se meu x for maior que a room largura
+           //então X passa a ser 0
+           x = 0;
+       }
+       if(x < 0)
+       {
+           //se meu x for menor que zero
+           x = room_width;
+           //meu x passa a ser a largura da room
+       }
+       if(y > room_height)
+       {
+           y = 0;
+       }
+       if(y < 0)
+       {
+           y = room_height;
+       }
     }
 }
 
@@ -158,6 +161,13 @@ colisoes_metodo = function()
             
         }
     }
+}
+
+//desenhando o efeito de sombre
+desenha_sombra = function()
+{
+    //chamando a sprite da sombra
+    draw_sprite(spr_sombra, 1, x, y)
 }
 
 
@@ -227,7 +237,7 @@ estado_parado = function()
         //se minha instancia oTransporte existe e eu estou dentro do raio de alcançe do oTransporte
         //e apertei o botão select
         estado = estado_interagindo;
-        room_goto(rm_arvore)
+        //room_goto(rm_arvore)
         //então meu estado irá para estado_interagindo 
     }
     //fazendo eu ir pro estado de combate
@@ -243,6 +253,7 @@ estado_movendo = function()
     
     //chamando nosso metodo de troca de sprite dentro do movimentos do gato
     muda_sprite(spr_gato_walk);
+    
     
     if(velh == 0 && velv == 0)
     {
@@ -374,4 +385,3 @@ estado_combate = function()
 
 //por padrão nossa variavel estado ela armazena o metodo estado_parado
 estado = estado_parado;
-
