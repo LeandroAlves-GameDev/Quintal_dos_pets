@@ -6,7 +6,7 @@
 desenha_moeda_icone = function()
 {
     var _escala = 3; // Reduzi ligeiramente a escala para não ocupar tanto espaço
-    var _x = display_get_gui_width() - 300; // Posição fixa a partir da direita
+    var _x = display_get_gui_width() - 370; // Posição fixa a partir da direita
     var _y = 55;
     
     draw_set_font(fnt_completa);
@@ -15,7 +15,7 @@ desenha_moeda_icone = function()
     // Desenha o ícone
     draw_sprite_ext(spr_moeda_icone, 0, _x, _y, _escala, _escala, 0, c_white, 1);
     
-    // Desenha o texto logo à frente do ícone
+    //Desenha o texto logo à frente do ícone
     var _w_icon = sprite_get_width(spr_moeda_icone) * _escala / 1.5;
     draw_text(_x + _w_icon, _y, string(global.pontos));
     
@@ -27,7 +27,7 @@ desenha_moeda_icone = function()
 desenha_moeda_habilidade_icone = function()
 {
     var _escala = 3; // Reduzi ligeiramente a escala para não ocupar tanto espaço
-    var _x = display_get_gui_width() - 150; // Posição fixa a partir da direita
+    var _x = display_get_gui_width() - 190; // Posição fixa a partir da direita
     var _y = 55;
     
     draw_set_font(fnt_completa);

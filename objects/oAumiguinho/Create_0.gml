@@ -17,7 +17,7 @@ velv_max = 2;
 _layer = layer_tilemap_get_id("tl_detalhes")
 
 //Criando uma variavel que armazena uma array list
-colisoes = [oLoja, oCerca, oCerca_lateral, _layer, oTransporte]
+colisoes = [oLoja, oCerca, oCerca_lateral, _layer, oTransporte, oTransporte_upgrade]
 
 //Criando uma variavel para ver se posso criar a arma
 crio_arma = false;

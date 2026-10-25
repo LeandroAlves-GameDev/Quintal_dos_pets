@@ -89,23 +89,34 @@ segue_loja = function()
 {
     if (instance_exists(oLoja))
     {
-        // Verifica a distância até a loja
+        //verifica a distância até a loja
         var distancia_loja = point_distance(x, y, oLoja.x, oLoja.y);
         
-        // Se estiver perto o suficiente da loja, ela é puxada para o centro dela
+        //se estiver perto o suficiente da loja ela é puxada para o centro dela
         if (distancia_loja > 5)
         {
             move_towards_point(oLoja.x, oLoja.y, 4); // Velocidade que ela voa para a loja
         }
         else
         {
-            // Quando encosta na loja, a loja "absorve" a moeda!
+            //quando encosta na loja, a loja "absorve" a moeda!
             vel = 0;
             
-            // Adiciona 1 moeda na carteira de upgrades do jogador (ex: global.moedas_loja)
+            //adiciona 1 moeda na carteira de upgrades do jogador
             global.moedas_loja += 1;
             
-            // Destroi a moeda física
+            //quando a loja pegar a moeda ele roda o som
+            var som_aleatorio = choose(snd_moedas, snd_moedas2, snd_moedas3);
+            //ele vai escolher entre esses tres sons
+            //feito isso ele vai definir qual som vai tocar naquele momento
+            audio_play_sound(som_aleatorio, 1, 0);
+            with(oLoja)
+            {
+                //dentro do objeto loja ele sofre a aplicação do efeito mola
+                //rodando o efeito mola da loja
+                efeito_mola(1.4, 1.2)
+            }
+            //Destroi a moeda física
             instance_destroy();
         }
     }

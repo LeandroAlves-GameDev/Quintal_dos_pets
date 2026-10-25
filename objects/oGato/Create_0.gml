@@ -42,8 +42,10 @@ estado = noone
 _layer = layer_tilemap_get_id("tl_detalhes")
 
 
+alvo = noone;
+
 //Criando uma variavel que armazena uma array list
-colisoes = [oLoja, oCerca, oCerca_lateral, _layer, oTransporte]
+colisoes = [oLoja, oCerca, oCerca_lateral, _layer, oTransporte, oTransporte_upgrade]
 
 //Criando uma variavel para ver se posso criar a arma
 crio_arma = false;
@@ -213,30 +215,30 @@ estado_parado = function()
         //rodando um debug para ver se estou me movendo
         //show_message("Estou ando para cima ou baixo" + string(estado))
     }
-    if(instance_exists(oLoja) && point_distance(x, y, oLoja.x, oLoja.y) < 55 && select)
+    if(instance_exists(oLoja) && point_distance(x, y, oLoja.x, oLoja.y) < 45 && select)
     {
         //se minha instancia loja existe e eu estou dentro do raio de alcançe da loja
         //e apertei o botão select
         //se meu global.pontos for maior que zero então eu posso interagir
         if(global.pontos > 0)
         {
-            estado = estado_interagindo; 
+            estado = estado_interagindo_loja;
             //então meu estado irá para estado_interagindo 
         }
         
     }
-    if(instance_exists(oTransporte) && point_distance(x, y, oTransporte.x, oTransporte.y) < 35 && select)
+    if(instance_exists(oTransporte) && point_distance(x, y, oTransporte.x, oTransporte.y) < 10 && select)
     {
         //se minha instancia oTransporte existe e eu estou dentro do raio de alcançe do oTransporte
         //e apertei o botão select
-        estado = estado_interagindo;
+        estado = estado_interagindo_transporte;
         //então meu estado irá para estado_interagindo 
     }
     if(instance_exists(oTransporte_upgrade) && point_distance(x, y, oTransporte_upgrade.x, oTransporte_upgrade.y) < 35 && select)
     {
         //se minha instancia oTransporte existe e eu estou dentro do raio de alcançe do oTransporte
         //e apertei o botão select
-        estado = estado_interagindo;
+        estado = estado_interagindo_transporte_upgrade;
         //room_goto(rm_arvore)
         //então meu estado irá para estado_interagindo 
     }
@@ -262,30 +264,30 @@ estado_movendo = function()
         //rodando um debug para ver se estou me movendo
         //show_message("Parei" + string(estado))
     }
-    if(instance_exists(oLoja) && point_distance(x, y, oLoja.x, oLoja.y) < 55 && select)
+    if(instance_exists(oLoja) && point_distance(x, y, oLoja.x, oLoja.y) < 45 && select)
     {
         //se minha instancia loja existe e eu estou dentro do raio de alcançe da loja
         //e apertei o botão select
         if(global.pontos > 0)
         {
-            estado = estado_interagindo; 
+            estado = estado_interagindo_loja; 
             //então meu estado irá para estado_interagindo 
         }
         //então meu estado irá para estado_interagindo 
     }
-    if(instance_exists(oTransporte) && point_distance(x, y, oTransporte.x, oTransporte.y) < 35 && select)
+    if(instance_exists(oTransporte) && point_distance(x, y, oTransporte.x, oTransporte.y) < 10 && select)
     {
         //se minha instancia oTransporte existe e eu estou dentro do raio de alcançe do oTransporte
         //e apertei o botão select
-        estado = estado_interagindo;
+        estado = estado_interagindo_transporte;
         //então meu estado irá para estado_interagindo 
     }
     if(instance_exists(oTransporte_upgrade) && point_distance(x, y, oTransporte_upgrade.x, oTransporte_upgrade.y) < 35 && select)
     {
         //se minha instancia oTransporte existe e eu estou dentro do raio de alcançe do oTransporte
         //e apertei o botão select
-        estado = estado_interagindo;
-        room_goto(rm_arvore)
+        estado = estado_interagindo_transporte_upgrade;
+        //room_goto(rm_arvore)
         //então meu estado irá para estado_interagindo 
     }
     if(room == rm_combate)
@@ -295,59 +297,125 @@ estado_movendo = function()
 }
 
 //Criando o metodo para interação do player
-estado_interagindo = function()
+estado_interagindo_loja = function()
 {
-    //zero a minha velocidade nesse estado
     velh_max = 0;
     velv_max = 0;
-    
-    //chamando nosso metodo de troca de sprite dentro do movimentos do gato
     muda_sprite(spr_gato_troca);
     
-    //Criando nosso metodo para interagir
     if(select)
     {
-        if(global.pontos > 0)
+        if(!instance_exists(oBarra_progresso))
         {
-           tempo_segurando++;
-           //ganhando tempo segurando o botão E
-           
-           //rodando o if para ver o tempo e maior que o necessario
-           if(tempo_segurando >= tempo_necessario)
-           {
-            //guardando o valor de pontos do player
-            var quantidade_pontos = global.pontos;
-            //se meu tempo_segurando e maior ou igual a  tempo_necessario
-            //então ele reseta meu tempo segurando
-            //reseta meus pontos
-               tempo_segurando = 0;
-               global.pontos = 0;
-                //se minha loja existir
-               if(instance_exists(oLoja))
-               {
-                   repeat(quantidade_pontos)
-                   {
-                        var pos_x = oLoja.x + irandom_range(-15, 15);
-                        var pos_y = oLoja.y + irandom_range(-15, 15);
-                        instance_create_layer(pos_x, pos_y, "Moedas", oMoeda);
-                   }
-               }
-            
-            
-               //ele mantem a minha velocidade
-               velh_max = 2; 
-               velv_max = 2;
-               //e eu troco o meu estado para estado parado
-               estado = estado_parado;
-           }
+            cria_barra = instance_create_layer(x, y - 35, "Efeito", oBarra_progresso);
         }
         
+        if (instance_exists(cria_barra))
+        {
+            cria_barra.progresso = tempo_segurando;
+            cria_barra.x = x;
+            cria_barra.y = y - 35;
+        }
         
+        if(tempo_segurando % 10 == 0) 
+        { 
+            global.pontos--;
+            if(instance_exists(oLoja)) 
+            {
+                var pos_x = oLoja.x + irandom_range(-15, 15);
+                var pos_y = oLoja.y + irandom_range(-15, 15);
+                instance_create_layer(pos_x, pos_y, "Moedas", oMoeda);
+            }
+        }
+        
+        if(global.pontos > 0)
+        {
+            tempo_segurando++;
+            
+            if(tempo_segurando >= tempo_necessario || global.pontos <= 0)
+            {
+                tempo_segurando = 0;
+                
+                if(instance_exists(cria_barra)) 
+                {
+                    instance_destroy(cria_barra); 
+                }
+                
+                velh_max = 2; 
+                velv_max = 2;
+                estado = estado_parado;
+            }
+        }
     }
-    //se eu soltei o botão select
+    
     if(select_solto)
     {
-        //então ele reseta o tempo, velocidade e o estado para parado
+        tempo_segurando = 0;
+        velh_max = 2; 
+        velv_max = 2;
+        estado = estado_parado;
+        if(instance_exists(oBarra_progresso)) { instance_destroy(cria_barra); }
+    }
+}
+
+
+// 2. Método exclusivo do Transporte (Sem barra, sem moedas)
+estado_interagindo_transporte = function()
+{
+    velh_max = 0;
+    velv_max = 0;
+    muda_sprite(spr_gato_troca);
+    
+    if(select)
+    {
+        tempo_segurando++;
+        
+        // Apenas segura o gato e faz a ação do transporte quando o tempo acabar
+        if(tempo_segurando >= tempo_necessario)
+        {
+            tempo_segurando = 0;
+            //Pede a ação do transporte aqui (ex: mudar de posição, etc)
+            
+            velh_max = 2; 
+            velv_max = 2;
+            estado = estado_parado;
+        }
+    }
+    
+    if(select_solto)
+    {
+        tempo_segurando = 0;
+        velh_max = 2; 
+        velv_max = 2;
+        estado = estado_parado;
+    }
+}
+
+
+// 3. Método exclusivo do Transporte Upgrade (Pode mudar de sala, etc)
+estado_interagindo_transporte_upgrade = function()
+{
+    velh_max = 0;
+    velv_max = 0;
+    muda_sprite(spr_gato_troca);
+    
+    if(select)
+    {
+        tempo_segurando++;
+        
+        if(tempo_segurando >= tempo_necessario)
+        {
+            tempo_segurando = 0;
+            room_goto(rm_arvore); // Muda de sala aqui
+            
+            velh_max = 2; 
+            velv_max = 2;
+            estado = estado_parado;
+        }
+    }
+    
+    if(select_solto)
+    {
         tempo_segurando = 0;
         velh_max = 2; 
         velv_max = 2;

@@ -1,6 +1,8 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
 
+//usando o metodo da mola
+inicia_efeito_mola();
 
 #region Metodos
 
@@ -22,29 +24,17 @@ muda_sprite = function(spr = spr_loja)
 gato_perto = function()
 
 {
-
     //ele vai calcular a distancia entre meu objeto loja e o objeto gato
-
     //se a distancia for menor que 50
-
     if(point_distance(x, y, oGato.x, oGato.y) < 55 && oGato.y >= (y - 10))
-
     {
-
         //então a sprite mudará para o spr_loja_destaque
-
         muda_sprite(spr_loja_destaque);
-
     }
-
     else
-
     {
-
         //caso contrario ou seja o gato está longe da loja então ela volta ao normal
-
         muda_sprite(spr_loja);
-
     }
 
 }

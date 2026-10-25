@@ -34,6 +34,9 @@
     "name":"spr_transporte_upgrades",
     "path":"sprites/spr_transporte_upgrades/spr_transporte_upgrades.yy",
   },
-  "spriteMaskId":null,
+  "spriteMaskId":{
+    "name":"spr_transporte_upgrades",
+    "path":"sprites/spr_transporte_upgrades/spr_transporte_upgrades.yy",
+  },
   "visible":true,
 }
