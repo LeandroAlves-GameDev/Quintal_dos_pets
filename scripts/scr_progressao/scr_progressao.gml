@@ -4,7 +4,7 @@
 //Criando uma variavel global de pontos
 global.pontos = 10000;
 
-global.moedas_loja = 1000;
+global.moedas_loja = 10000;
 
 
 global.upgrades =

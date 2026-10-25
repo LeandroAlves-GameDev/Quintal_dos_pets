@@ -12,21 +12,21 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"v1","%Name":"fdc9de98-1801-44c8-b975-3d2fee8a17dd","name":"fdc9de98-1801-44c8-b975-3d2fee8a17dd","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"6c5724a1-07f2-401d-a2fb-b9a8ca6fb8db","name":"6c5724a1-07f2-401d-a2fb-b9a8ca6fb8db","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
   "height":16,
   "HTile":false,
   "layers":[
-    {"$GMImageLayer":"","%Name":"2c5369a0-6410-463d-aeda-109ec1da783c","blendMode":0,"displayName":"default","isLocked":false,"name":"2c5369a0-6410-463d-aeda-109ec1da783c","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"935c4508-c8f3-4b1a-8c50-f7e373e2d770","blendMode":0,"displayName":"default","isLocked":false,"name":"935c4508-c8f3-4b1a-8c50-f7e373e2d770","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
   "name":"spr_moeda_habilidades",
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"Loja",
-    "path":"folders/Sprites/Loja.yy",
+    "name":"HUDs",
+    "path":"folders/Sprites/HUDs.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
@@ -69,8 +69,8 @@
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"fdc9de98-1801-44c8-b975-3d2fee8a17dd","path":"sprites/spr_moeda_habilidades/spr_moeda_habilidades.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"a03553ff-4b85-4288-8a05-4bb6d6b29915","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"6c5724a1-07f2-401d-a2fb-b9a8ca6fb8db","path":"sprites/spr_moeda_habilidades/spr_moeda_habilidades.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"266c98d3-4ad4-4b90-8cc0-eba8019c5f97","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,

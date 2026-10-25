@@ -12,8 +12,8 @@
   "name":"oUpgrades",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"Arvore_habilidades",
+    "path":"folders/Objects/Arvore_habilidades.yy",
   },
   "parentObjectId":null,
   "persistent":false,

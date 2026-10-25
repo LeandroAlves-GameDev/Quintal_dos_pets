@@ -9,8 +9,8 @@
   "name":"oTransporte",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"Transportes",
+    "path":"folders/Objects/Transportes.yy",
   },
   "parentObjectId":null,
   "persistent":false,

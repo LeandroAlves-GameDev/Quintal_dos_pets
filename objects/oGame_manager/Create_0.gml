@@ -5,11 +5,13 @@
 
 //Criando a variavel de tempo da fase
 tempo_fase = calcula_tempo_fase();
+tempo_fase_max = tempo_fase;
 
 verificar_vitoria = false;
 //variavel para se ganhei ou não
 
-//Criando nosso sistema de tempo
+
+//Criando nosso sistema de tempo para os inimigos
 tempo = 100;
 //por padrão os inimigos nascem a cada 1 segundo
 //criando uma variavel com lista de inimigos

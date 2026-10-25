@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"Loja",
-    "path":"folders/Sprites/Loja.yy",
+    "name":"HUDs",
+    "path":"folders/Sprites/HUDs.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

@@ -88,7 +88,7 @@ gato_move = function()
     //assim ele dará resultado do valor de velh
     
     //criando o sistema para se mover para cima
-    velv = (down - up) * velv_max
+    velv = (down - up) * velv_max;
     //a mesma logica se aplicará o o movimento vertical
     
     
@@ -152,11 +152,11 @@ colisoes_metodo = function()
         //criando um if para nosso laço de repeticão
         if(colisoes[i])
         {
-            if(place_meeting(x + velh, y, colisoes[i]))
+            if(place_meeting(x + sign(velh), y, colisoes[i]))
             {
                 velh = 0;
             }
-            if(place_meeting(x, y + velv, colisoes[i]))
+            if(place_meeting(x, y + sign(velv), colisoes[i]))
             {
                 velv = 0;
             }
@@ -227,21 +227,21 @@ estado_parado = function()
         }
         
     }
-    if(instance_exists(oTransporte) && point_distance(x, y, oTransporte.x, oTransporte.y) < 10 && select)
-    {
-        //se minha instancia oTransporte existe e eu estou dentro do raio de alcançe do oTransporte
-        //e apertei o botão select
-        estado = estado_interagindo_transporte;
-        //então meu estado irá para estado_interagindo 
-    }
-    if(instance_exists(oTransporte_upgrade) && point_distance(x, y, oTransporte_upgrade.x, oTransporte_upgrade.y) < 35 && select)
-    {
-        //se minha instancia oTransporte existe e eu estou dentro do raio de alcançe do oTransporte
-        //e apertei o botão select
-        estado = estado_interagindo_transporte_upgrade;
-        //room_goto(rm_arvore)
-        //então meu estado irá para estado_interagindo 
-    }
+    //if(instance_exists(oTransporte) && point_distance(x, y, oTransporte.x, oTransporte.y) < 10 && select)
+    //{
+        ////se minha instancia oTransporte existe e eu estou dentro do raio de alcançe do oTransporte
+        ////e apertei o botão select
+        ////estado = estado_interagindo_transporte;
+        ////então meu estado irá para estado_interagindo 
+    //}
+    //if(instance_exists(oTransporte_upgrade) && point_distance(x, y, oTransporte_upgrade.x, oTransporte_upgrade.y) < 35 && select)
+    //{
+        ////se minha instancia oTransporte existe e eu estou dentro do raio de alcançe do oTransporte
+        ////e apertei o botão select
+        ////estado = estado_interagindo_transporte_upgrade;
+        ////room_goto(rm_arvore)
+        ////então meu estado irá para estado_interagindo 
+    //}
     //fazendo eu ir pro estado de combate
     if(room == rm_combate)
     {
@@ -275,21 +275,22 @@ estado_movendo = function()
         }
         //então meu estado irá para estado_interagindo 
     }
-    if(instance_exists(oTransporte) && point_distance(x, y, oTransporte.x, oTransporte.y) < 10 && select)
-    {
-        //se minha instancia oTransporte existe e eu estou dentro do raio de alcançe do oTransporte
-        //e apertei o botão select
-        estado = estado_interagindo_transporte;
-        //então meu estado irá para estado_interagindo 
-    }
-    if(instance_exists(oTransporte_upgrade) && point_distance(x, y, oTransporte_upgrade.x, oTransporte_upgrade.y) < 35 && select)
-    {
-        //se minha instancia oTransporte existe e eu estou dentro do raio de alcançe do oTransporte
-        //e apertei o botão select
-        estado = estado_interagindo_transporte_upgrade;
-        //room_goto(rm_arvore)
-        //então meu estado irá para estado_interagindo 
-    }
+    
+    //if(instance_exists(oTransporte) && point_distance(x, y, oTransporte.x, oTransporte.y) < 10 && select)
+    //{
+        ////se minha instancia oTransporte existe e eu estou dentro do raio de alcançe do oTransporte
+        ////e apertei o botão select
+        ////estado = estado_interagindo_transporte;
+        ////então meu estado irá para estado_interagindo 
+    //}
+    //if(instance_exists(oTransporte_upgrade) && point_distance(x, y, oTransporte_upgrade.x, oTransporte_upgrade.y) < 35 && select)
+    //{
+        ////se minha instancia oTransporte existe e eu estou dentro do raio de alcançe do oTransporte
+        ////e apertei o botão select
+        ////estado = estado_interagindo_transporte_upgrade;
+        ////room_goto(rm_arvore)
+        ////então meu estado irá para estado_interagindo 
+    //}
     if(room == rm_combate)
     {
         estado = estado_combate;
@@ -299,129 +300,161 @@ estado_movendo = function()
 //Criando o metodo para interação do player
 estado_interagindo_loja = function()
 {
+    //definindo a vel como 0
     velh_max = 0;
     velv_max = 0;
     muda_sprite(spr_gato_troca);
-    
+    //mudando a sprite comb base no metodo muda sprite
     if(select)
     {
+        //se eu apertei select
         if(!instance_exists(oBarra_progresso))
         {
+            //ele vai verificar se a minha instancia barra de progressão existe
+            //se não existe então ele cria a barra
             cria_barra = instance_create_layer(x, y - 35, "Efeito", oBarra_progresso);
         }
-        
+        //com a barra criada
+        //ele vai verificar se existe novamente ela para evitar bugs
         if (instance_exists(cria_barra))
         {
+            //se existe então ele pega o progresso do objeto barra progressão
+            //e faz com a variavel progresso se torne igual ao tempo segurando
             cria_barra.progresso = tempo_segurando;
             cria_barra.x = x;
+            //ele vai informar o x e y da onde esssa barra deve ficar
             cria_barra.y = y - 35;
         }
         
+        //a cada 10 unidades de tempo segurando, o jogador perde pontos e gera moedas na loja
         if(tempo_segurando % 10 == 0) 
         { 
+            //diminuindo o valor de global pontos
             global.pontos--;
             if(instance_exists(oLoja)) 
             {
+                //se minha instancia loja existe
                 var pos_x = oLoja.x + irandom_range(-15, 15);
                 var pos_y = oLoja.y + irandom_range(-15, 15);
+                //então ele vai calcular uma posição aleatorio dentro -15 e 15 e definir onde vai nascer a moeda
                 instance_create_layer(pos_x, pos_y, "Moedas", oMoeda);
             }
         }
         
+        //se meu global pontos for maior que zero
         if(global.pontos > 0)
         {
+            //eu ganho tempo segurando
             tempo_segurando++;
             
+            //se meu tempo segurando for maior ou igual o tempo necessario ou global pontos for menor ou igual que zero
             if(tempo_segurando >= tempo_necessario || global.pontos <= 0)
             {
                 tempo_segurando = 0;
+                //ele reseta o meu tempo
                 
                 if(instance_exists(cria_barra)) 
                 {
+                    //se minha instancia cria barra existe
+                    //então ele destroi ela
                     instance_destroy(cria_barra); 
                 }
                 
+                //resetando os valores para o numero original que e 2
                 velh_max = 2; 
                 velv_max = 2;
+                //voltando ao estado de parado
                 estado = estado_parado;
             }
         }
     }
     
+    //se eu soltei a tecla E então ele ativa o select solto
     if(select_solto)
     {
+        //com isso ele reseta meu tempo segurando
         tempo_segurando = 0;
+        //minha vel max para o valor original
         velh_max = 2; 
         velv_max = 2;
+        //volto para o estado parado
         estado = estado_parado;
-        if(instance_exists(oBarra_progresso)) { instance_destroy(cria_barra); }
-    }
-}
-
-
-// 2. Método exclusivo do Transporte (Sem barra, sem moedas)
-estado_interagindo_transporte = function()
-{
-    velh_max = 0;
-    velv_max = 0;
-    muda_sprite(spr_gato_troca);
-    
-    if(select)
-    {
-        tempo_segurando++;
-        
-        // Apenas segura o gato e faz a ação do transporte quando o tempo acabar
-        if(tempo_segurando >= tempo_necessario)
-        {
-            tempo_segurando = 0;
-            //Pede a ação do transporte aqui (ex: mudar de posição, etc)
-            
-            velh_max = 2; 
-            velv_max = 2;
-            estado = estado_parado;
+        if(instance_exists(oBarra_progresso)) 
+        { 
+            //ele verifica se existe ainda a instancia barra progresso
+            //se existe ele destroi ela
+            instance_destroy(cria_barra); 
         }
     }
-    
-    if(select_solto)
-    {
-        tempo_segurando = 0;
-        velh_max = 2; 
-        velv_max = 2;
-        estado = estado_parado;
-    }
 }
 
 
-// 3. Método exclusivo do Transporte Upgrade (Pode mudar de sala, etc)
-estado_interagindo_transporte_upgrade = function()
-{
-    velh_max = 0;
-    velv_max = 0;
-    muda_sprite(spr_gato_troca);
-    
-    if(select)
-    {
-        tempo_segurando++;
-        
-        if(tempo_segurando >= tempo_necessario)
-        {
-            tempo_segurando = 0;
-            room_goto(rm_arvore); // Muda de sala aqui
-            
-            velh_max = 2; 
-            velv_max = 2;
-            estado = estado_parado;
-        }
-    }
-    
-    if(select_solto)
-    {
-        tempo_segurando = 0;
-        velh_max = 2; 
-        velv_max = 2;
-        estado = estado_parado;
-    }
-}
+//criando esses estados para caso seja necessario
+//estado_interagindo_transporte = function()
+//{
+    ////por padrão minha vel será zero nesse estado
+    //velh_max = 0;
+    //velv_max = 0;
+    //muda_sprite(spr_gato_troca);
+    ////mudando a sprite comb base no metodo muda sprite
+    //if(select)
+    //{
+        ////se eu apertei select
+        ////quer dizer que eu estou ganhando tempo
+        //tempo_segurando++;
+        //
+        ////se meu tempo for maior ou igual ao necessario
+        //if(tempo_segurando >= tempo_necessario)
+        //{
+            ////ele reseta o valor tempo segurando pra zero
+            //tempo_segurando = 0;
+            //
+            ////ele reseta o vel para 2 que valor original 
+            //velh_max = 2; 
+            //velv_max = 2;
+            ////ele muda o estado para parado
+            //estado = estado_parado;
+        //}
+    //}
+    //
+    //if(select_solto)
+    //{
+        //tempo_segurando = 0;
+        //velh_max = 2; 
+        //velv_max = 2;
+        //estado = estado_parado;
+    //}
+//}
+
+//criando esses estados para caso seja necessario
+//estado_interagindo_transporte_upgrade = function()
+//{
+    //velh_max = 0;
+    //velv_max = 0;
+    //muda_sprite(spr_gato_troca);
+    //
+    //if(select)
+    //{
+        //tempo_segurando++;
+        //
+        //if(tempo_segurando >= tempo_necessario)
+        //{
+            //tempo_segurando = 0;
+            //
+            //velh_max = 2; 
+            //velv_max = 2;
+            //estado = estado_parado;
+        //}
+    //}
+    //
+    //if(select_solto)
+    //{
+        //tempo_segurando = 0;
+        //velh_max = 2; 
+        //velv_max = 2;
+        //estado = estado_parado;
+    //}
+//}
 
 //Criando nosso estado de combate
 estado_combate = function()
