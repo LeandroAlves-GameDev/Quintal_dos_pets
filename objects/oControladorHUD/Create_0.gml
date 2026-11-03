@@ -5,8 +5,8 @@
 //criando o metodo de desenho pro icone da moeda
 desenha_moeda_icone = function()
 {
-    var _escala = 3; //definindo o tamanho da escala
-    var _x = display_get_gui_width() - 370; //deixando a posição fixa
+    var _escala = 2.5; //definindo o tamanho da escala
+    var _x = display_get_gui_width() - 330; //deixando a posição fixa
     var _y = 55;
     //definindo a altura 
     
@@ -27,8 +27,8 @@ desenha_moeda_icone = function()
 
 desenha_moeda_habilidade_icone = function()
 {
-    var _escala = 3; //definindo o tamanho da escala
-    var _x = display_get_gui_width() - 210; //deixando a posição fixa
+    var _escala = 2.5; //definindo o tamanho da escala
+    var _x = display_get_gui_width() - 170; //deixando a posição fixa
     //definindo a altura 
     var _y = 55;
     
@@ -57,12 +57,20 @@ desenha_vida_player = function()
     var _x = 200;
     //passando a largura do x
     
+    //criando uma variavel temporaria para nosssa vida
+    var porcentagem_vida = 1;
+    if (instance_exists(oGato))
+    {
+        //se meu gato existir
+        porcentagem_vida = clamp(oGato.vida_atual / oGato.vida_max, 0, 1);
+        //ele vai diminuir o tamanho da barra de vida com base na divisão oGato.vida_atual / oGato.vida_max;
+    }
     
     draw_set_font(fnt_completa);
     draw_set_valign(fa_middle);
     
     draw_sprite_ext(spr_icone_vida, 0, _x - 155, _y, _escala, _escala, 0, c_white, 1);
-    draw_sprite_ext(spr_vida, 1, _x, _y, _escala, _escala, 0, c_white, 1);
+    draw_sprite_ext(spr_vida, 1, _x - 117, _y - 6, _escala * porcentagem_vida, _escala, 0, c_white, 1);
     draw_sprite_ext(spr_moldura_barra_vida, 0, _x, _y, _escala, _escala, 0, c_white, 1);
 }
 

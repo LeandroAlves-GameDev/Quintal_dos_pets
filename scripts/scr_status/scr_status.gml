@@ -4,7 +4,7 @@
 
 function calcula_velocidade()
 {
-    var _vel_base = 2;
+    var _vel_base = 1.5;
     var _bonus = 0;
     
     // Soma todos os níveis de velocidade do struct

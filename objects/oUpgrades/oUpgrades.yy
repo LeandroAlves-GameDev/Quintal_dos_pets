@@ -37,6 +37,7 @@
     {"$GMObjectProperty":"v2","%Name":"id_upgrade","filters":[],"listItems":[],"multiselect":false,"name":"id_upgrade","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"\"velocidade\"","varType":2,},
     {"$GMObjectProperty":"v2","%Name":"level","filters":[],"listItems":[],"multiselect":false,"name":"level","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varType":1,},
     {"$GMObjectProperty":"v2","%Name":"max_level","filters":[],"listItems":[],"multiselect":false,"name":"max_level","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"5","varType":1,},
+    {"$GMObjectProperty":"v2","%Name":"descricao","filters":[],"listItems":[],"multiselect":false,"name":"descricao","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"\"Permite ter um amiguinho para ajudar cobrindo as minhas costas.","varType":2,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",

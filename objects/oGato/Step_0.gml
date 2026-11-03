@@ -1,5 +1,8 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
+
+if(global.hitstop) exit;
+
 //chamando nossos metodos no step
 estado();
 //chamando meu estado principal
@@ -12,10 +15,10 @@ cata_inputs();
 
 gato_move();
 
+checar_transicao();
 
 retorna_efeito_brilho();
 
-velh_max = calcula_velocidade();
-velv_max = calcula_velocidade();
+retorna_mola();
 
 //depth = -y;

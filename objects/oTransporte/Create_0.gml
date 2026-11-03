@@ -40,7 +40,7 @@ gato_perto = function()
                 transicionando = true;
                 
                 //rodando o sistema de transição de room
-                minha_sequence = layer_sequence_create("sq_transicao", x, y, sq_transicao)
+                minha_sequence = layer_sequence_create("sq_transicao", x, y, sq_transicao_1)
                 //criando a minha sequencia
                 
               

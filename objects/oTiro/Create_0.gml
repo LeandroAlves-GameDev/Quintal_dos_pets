@@ -10,6 +10,7 @@ dano_tiro = calcula_dano_tiro();
 velh = 3;
 velv = 3;
 
+direcao = 0;
 
 #endregion
 

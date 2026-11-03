@@ -1,6 +1,7 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
 
+
 //criando os amiguinhos 
 var _total_amigos = calcula_amigos();
 
@@ -14,17 +15,25 @@ for (var i = 0; i < _total_amigos; i++)
 
 inicia_efeito_brilho();
 
+
+//Chamando o efeito da mola tambem
+inicia_efeito_mola();
+
 //Criando uma region para melhorar o codigo
 #region Variaveis
+
+//Criando o sistema de vida do gato
+vida_max = 100;
+vida_atual = vida_max;
 
 //Criando o sistema de movimentos do nosso cat
 velh = 0;
 //definindo a vel dele para zero
-velh_max = 2;
+velh_max = calcula_velocidade();
 //valor da velh dele max será de 3
 //dando uma velv pro gato tambem
 velv = 0;
-velv_max = 2;
+velv_max = calcula_velocidade();
 
 //Criando as variaveis de controle pro nosso jogo
 right = noone;
@@ -53,6 +62,15 @@ crio_arma = false;
 //Criando variaveis para verificar quanto tempo estou segurando o botão la ele
 tempo_segurando = 0;
 tempo_necessario = 60;
+
+//Criando um temporizador do estado morte
+tempo_morte = 0;
+tempo_morte_max = 60;
+
+//criando as variaveis para voltar para room quintal
+transicionando = false;
+minha_sequence = noone;
+
 
 #endregion
 
@@ -152,11 +170,11 @@ colisoes_metodo = function()
         //criando um if para nosso laço de repeticão
         if(colisoes[i])
         {
-            if(place_meeting(x + sign(velh), y, colisoes[i]))
+            if(place_meeting(x + sign(velh_max), y, colisoes[i]))
             {
                 velh = 0;
             }
-            if(place_meeting(x, y + sign(velv), colisoes[i]))
+            if(place_meeting(x, y + sign(velv_max), colisoes[i]))
             {
                 velv = 0;
             }
@@ -165,11 +183,53 @@ colisoes_metodo = function()
     }
 }
 
+//Criando o metodo de tomar dano do gato
+toma_dano = function(dano)
+{
+    //dentro do metodo de dano iremos passar um parametro chamado dano
+    //fazendo eu perder vida
+    vida_atual -= dano;
+    //rodando meu sistema de hitstop
+    inicia_hitstop(10);
+    //chamando meu sistema de dano por texto
+    cria_texto_dano(x, y, dano)
+    
+    //chamando o efeito da mola
+    efeito_mola(.8, 1.4)
+    
+    //meu vida max e menos igual dano
+    if(vida_atual < 0)
+    {
+        estado = estado_morte;
+        //se minha vida for menor que zero então eu mudo pro estado morte
+        //eu destruo o meu player
+        if (instance_exists(oGun))
+        {
+            //e se eu estiver sem vida e existir alguma arma
+            instance_destroy(oGun);
+            //então a arma e destruida
+        }
+        if (instance_exists(oAumiguinho))
+        {
+            //e se eu estiver sem vida e existir um amigo
+            instance_destroy(oAumiguinho);
+            //então ele some tambem 
+            instance_destroy(oGun_osso);
+        }
+    }
+    
+}
+
+
 //desenhando o efeito de sombre
 desenha_sombra = function()
 {
-    //chamando a sprite da sombra
-    draw_sprite(spr_sombra, 1, x, y)
+    if (estado != estado_morte)
+    {
+        //ele so desenha a sombra se não estou no estado de morte
+        //chamando a sprite da sombra
+        draw_sprite(spr_sombra, 1, x, y)
+    }
 }
 
 
@@ -326,47 +386,47 @@ estado_interagindo_loja = function()
             cria_barra.y = y - 35;
         }
         
-        //a cada 10 unidades de tempo segurando, o jogador perde pontos e gera moedas na loja
-        if(tempo_segurando % 10 == 0) 
-        { 
-            //diminuindo o valor de global pontos
-            global.pontos--;
-            if(instance_exists(oLoja)) 
-            {
-                //se minha instancia loja existe
-                var pos_x = oLoja.x + irandom_range(-15, 15);
-                var pos_y = oLoja.y + irandom_range(-15, 15);
-                //então ele vai calcular uma posição aleatorio dentro -15 e 15 e definir onde vai nascer a moeda
-                instance_create_layer(pos_x, pos_y, "Moedas", oMoeda);
-            }
-        }
-        
         //se meu global pontos for maior que zero
         if(global.pontos > 0)
         {
-            //eu ganho tempo segurando
-            tempo_segurando++;
-            
-            //se meu tempo segurando for maior ou igual o tempo necessario ou global pontos for menor ou igual que zero
-            if(tempo_segurando >= tempo_necessario || global.pontos <= 0)
-            {
-                tempo_segurando = 0;
-                //ele reseta o meu tempo
-                
-                if(instance_exists(cria_barra)) 
+            //a cada 10 unidades de tempo segurando, o jogador perde pontos e gera moedas na loja
+            if(tempo_segurando % 10 == 0) 
+            { 
+                //diminuindo o valor de global pontos
+                global.pontos--;
+                if(instance_exists(oLoja)) 
                 {
-                    //se minha instancia cria barra existe
-                    //então ele destroi ela
-                    instance_destroy(cria_barra); 
+                    //se minha instancia loja existe
+                    var pos_x = oLoja.x + irandom_range(-15, 15);
+                    var pos_y = oLoja.y + irandom_range(-15, 15);
+                    //então ele vai calcular uma posição aleatorio dentro -15 e 15 e definir onde vai nascer a moeda
+                    instance_create_layer(pos_x, pos_y, "Moedas", oMoeda);
                 }
+            }
+        }
+        //eu ganho tempo segurando
+        tempo_segurando++;
+            
+        
+        //se meu tempo segurando for maior ou igual o tempo necessario ou global pontos for menor ou igual que zero
+        if(tempo_segurando >= tempo_necessario || global.pontos <= 0) 
+        {
+            tempo_segurando = 0;
+            //ele reseta o meu tempo
+            
+            if(instance_exists(cria_barra)) 
+            {
+                //se minha instancia cria barra existe
+                //então ele destroi ela
+                instance_destroy(cria_barra); 
+            }
                 
                 //resetando os valores para o numero original que e 2
-                velh_max = 2; 
-                velv_max = 2;
+                velh_max = calcula_velocidade(); 
+                velv_max = calcula_velocidade();
                 //voltando ao estado de parado
                 estado = estado_parado;
             }
-        }
     }
     
     //se eu soltei a tecla E então ele ativa o select solto
@@ -375,8 +435,8 @@ estado_interagindo_loja = function()
         //com isso ele reseta meu tempo segurando
         tempo_segurando = 0;
         //minha vel max para o valor original
-        velh_max = 2; 
-        velv_max = 2;
+        velh_max = calcula_velocidade(); 
+        velv_max = calcula_velocidade();
         //volto para o estado parado
         estado = estado_parado;
         if(instance_exists(oBarra_progresso)) 
@@ -456,6 +516,29 @@ estado_interagindo_loja = function()
     //}
 //}
 
+//Criando o estado de morte do player
+estado_morte = function()
+{
+    //chamando meu metodo muda sprite
+    muda_sprite(spr_gato_morte);
+    velh_max = 0;
+    velv_max = 0;
+    //zerando minha vel caso tenha morrido
+    tempo_morte++;
+    //ganhando tempo morte
+    if(tempo_morte >= tempo_morte_max && !transicionando)
+    {
+        //então meu transicionando passará a ser como true ou seja verdadeiro
+        transicionando = true;
+        //ele faz o transicioanando ser true     
+        //rodando o sistema de transição de room
+        //ele tambem cria uma sequence 
+        minha_sequence = layer_sequence_create("sq_transicao", x, y, sq_transicao_1)
+    }
+}
+
+
+
 //Criando nosso estado de combate
 estado_combate = function()
 {
@@ -481,6 +564,24 @@ estado_combate = function()
     }
     
 }
+
+
+//rodando o metodo de transição
+checar_transicao = function()
+{
+    if (transicionando && layer_sequence_exists("sq_transicao", minha_sequence))
+    {
+        //se meu transicionando for false e existir uma sq_transicao
+        if (layer_sequence_is_finished(minha_sequence))
+        {
+            //então a minha sequencia e finalizado 
+            //e eu sou transportado para room arvore
+            room_goto(rm_quintal)
+            estado = estado_parado;
+        }
+    }
+}
+
 
 #endregion
 

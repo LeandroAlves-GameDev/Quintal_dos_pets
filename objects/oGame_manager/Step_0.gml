@@ -3,3 +3,5 @@
 cria_inimigos();
 
 verifica_fim_fase();
+
+checar_transicao();

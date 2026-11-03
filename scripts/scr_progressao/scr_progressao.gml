@@ -2,9 +2,9 @@
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 para obter mais informações
 
 //Criando uma variavel global de pontos
-global.pontos = 10000;
+global.pontos = 10;
 
-global.moedas_loja = 10000;
+global.moedas_loja = 10;
 
 
 global.upgrades =

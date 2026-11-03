@@ -5,8 +5,10 @@
 var _transicionando = false;
 
 //se meu transporte existe e transicionando ou oTransporte_upgrade e transicionando for falso 
-if(instance_exists(oTransporte) && oTransporte.transicionando || 
-    instance_exists(oTransporte_upgrade) && oTransporte_upgrade.transicionando)
+if((instance_exists(oTransporte) && oTransporte.transicionando) || 
+   (instance_exists(oTransporte_upgrade) && oTransporte_upgrade.transicionando) || 
+   (instance_exists(oGame_manager) && oGame_manager.transicionando) ||
+   (instance_exists(oGato) && oGato.transicionando))
 {
     //ele passa a ser tornar verdadeiro
     _transicionando = true;
@@ -20,10 +22,10 @@ if(!_transicionando)
     desenha_moeda_habilidade_icone();
     desenha_moeda_icone();
     desenha_vida_player();
+    desenha_hud_tempo();
     
 }
 
-desenha_hud_tempo();
 
 
 draw_set_font(noone);

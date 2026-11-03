@@ -1,14 +1,14 @@
 /// @description Inserir descrição aqui
 // Você pode escrever seu código neste editor
-draw_self()
 //
 //draw_text(x, y - 40, velh)
 //draw_text(x, y - 60, velv)
 
-desenha_efeito_brilho()
-
 desenha_sombra();
 
+desenha_efeito_mola();
+
+desenha_efeito_brilho()
 
 // Desenha um círculo sem preenchimento (apenas o contorno) para mostrar a área de interação
 // Parâmetros: x, y, raio, cor_interna, cor_externa, contorno_apenas (true)

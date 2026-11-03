@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_dano_texto",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_dano_texto",
+  "parent":{
+    "name":"Efeitos",
+    "path":"folders/Efeitos.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
