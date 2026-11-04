@@ -16,6 +16,8 @@ for (var i = 0; i < _total_amigos; i++)
 inicia_efeito_brilho();
 
 
+audio_play_sound(Devonshire_Waltz_Moderato, 1, 1)
+
 //Chamando o efeito da mola tambem
 inicia_efeito_mola();
 
@@ -201,6 +203,7 @@ toma_dano = function(dano)
     if(vida_atual < 0)
     {
         estado = estado_morte;
+        audio_stop_all();
         //se minha vida for menor que zero então eu mudo pro estado morte
         //eu destruo o meu player
         if (instance_exists(oGun))
@@ -305,6 +308,7 @@ estado_parado = function()
     //fazendo eu ir pro estado de combate
     if(room == rm_combate)
     {
+        audio_stop_sound(Devonshire_Waltz_Moderato)
         estado = estado_combate;
     }
 }
@@ -542,9 +546,11 @@ estado_morte = function()
 //Criando nosso estado de combate
 estado_combate = function()
 {
+    
     //Criando um sistema de melhoria para a sprite
     var _parado = (velh == 0 && velv == 0)
     //se eu estou parado se me mover
+    
     if(_parado)
     {
         //se e confirmado que estou parado durante o combate
@@ -560,6 +566,8 @@ estado_combate = function()
     {
         //chamando o metodo de segurar arma apenas uma vez no create
         segura_arma();
+        //quando eu entrar no estado de combate eu rodo a musica de combate
+        audio_play_sound(Adventures_in_Adventureland, 1, 1)
         crio_arma = true;
     }
     

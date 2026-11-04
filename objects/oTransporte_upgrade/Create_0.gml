@@ -5,6 +5,7 @@ transicionando = false;
 minha_sequence = noone;
 
 
+
 //Criando um metodo para a troca de sprite ser melhor
 muda_sprite = function(spr = spr_transporte_upgrades)
 {

@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"March_of_the_Spoons",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":0,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":186.40979,
+  "exportDir":"",
+  "name":"March_of_the_Spoons",
+  "parent":{
+    "name":"Sounds",
+    "path":"folders/Sounds.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"March_of_the_Spoons.mp3",
+  "volume":1.0,
+}

@@ -11,6 +11,8 @@ index_selecionado = 0;
 transicionando = false;
 minha_sequence = noone;
 
+//rodando a musica do menu
+audio_play_sound(March_of_the_Spoons, 1, 1)
 
 //Criando o metodo para poder se mover no menu
 move_menu = function()
@@ -26,13 +28,15 @@ move_menu = function()
     {
         //se eu apertei down entao eu ganho index
         index_selecionado++;
-        show_debug_message(index_selecionado)
+        //show_debug_message(index_selecionado)
+        audio_play_sound(Som_botao, 1, 0)
     }
     if(up)
     {
         //se apertei up então eu perco index
         index_selecionado--;
-        show_debug_message(index_selecionado)
+        //show_debug_message(index_selecionado)
+        audio_play_sound(Som_botao, 1, 0)
        
     }
     //limitando o index do botão
@@ -41,6 +45,7 @@ move_menu = function()
     
     if(enter)
     {
+         audio_play_sound(Som_botao, 1, 0)
          //Criando nosso sistema de navegação usando switch
          switch (index_selecionado) 
          {
@@ -135,6 +140,8 @@ checar_transicao = function()
         //se meu transicionando for false e existir uma sq_transicao
         if (layer_sequence_is_finished(minha_sequence))
         {
+            //encerrando a minha musica
+            audio_stop_all();
             //então a minha sequencia e finalizado 
             //e eu sou transportado para room arvore
             room_goto(rm_quintal)

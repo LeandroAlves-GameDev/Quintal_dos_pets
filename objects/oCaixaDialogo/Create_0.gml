@@ -15,6 +15,18 @@ desenha_texto = false;
 destroi_caixa = false;
 
 
+//rodando nosso sistema de wave
+scribble_anim_wave(1, 0.3, 0.1);
+
+
+//scribble_sprite_add("spr_moeda_habilidades");
+
+//Criando nosso sistema de maquina de escrever
+typist = scribble_typist();
+
+typist.in(.3, 2);
+//o typist consiste em desenhar o texto apos um determinado tempo
+
 //Criando um metodo de inicio da caixa de dialogo
 inicia_caixa_dialogo = function()
 {
@@ -22,11 +34,11 @@ inicia_caixa_dialogo = function()
     image_xscale = lerp(image_xscale, 2.5, .1);
     
     //fazendo a caixa subir
-    y = lerp(y, ystart - 30, .1);
+    y = lerp(y, ystart - 50, .1);
     
     
     //vendo se o y chegou proximo do limite dele
-    if(y <= ystart - 29.9)
+    if(y <= ystart - 49.9)
     {
         desenha_texto = true;
     }

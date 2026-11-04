@@ -23,7 +23,7 @@ tempo = 100;
 inimigos = [oAlvo_Comum, oAlvo_Incomum] 
 //por padrão teremos apenas um no momento
 total_gerados = 0;
-limite_total_fase = 8;
+limite_total_fase = 15;
 
 #endregion
 
@@ -35,7 +35,9 @@ cria_inimigos = function()
     //criando um limite de spawn dos inimigos
     var limite_max = 8;
     //dando um valor limite para os inimigos
-    quantidade_atual = instance_number(inimigos[1]);
+    var _indice_aleatorio = irandom(array_length(inimigos) - 1);
+    var _tipo_inimigo_escolhido = inimigos[_indice_aleatorio];
+    quantidade_atual = instance_number(_tipo_inimigo_escolhido);
     
     tempo--;
     if(tempo < 0 && quantidade_atual < limite_max && total_gerados < limite_total_fase)
@@ -62,7 +64,7 @@ cria_inimigos = function()
           spawn_x = room_width + 32;
           spawn_y = random_range(0, room_height); 
        } 
-       var criando_inimigos = instance_create_layer(spawn_x, spawn_y, "Inimigos", inimigos[1]);
+       var criando_inimigos = instance_create_layer(spawn_x, spawn_y, "Inimigos", _tipo_inimigo_escolhido);
        //ele vai criar inimigos na layer inimigos e usar o array list como base
        tempo = 100;
        //resetando o tempo 
@@ -84,8 +86,10 @@ verifica_fim_fase = function()
     if(verificar_vitoria && !transicionando)
     {
         //se meu tempo da fase for menor que zero ou meus inimigos forem iguais a 0
-       if(tempo_fase < 0 || instance_number(inimigos[1]) == 0 )
+       if(tempo_fase < 0 || instance_number(oInimigo_Pai) == 0)
        {
+        
+           audio_stop_sound(Devonshire_Waltz_Moderato); 
            //room_goto(rm_quintal)
            //então meu transicionando passará a ser como true ou seja verdadeiro
            transicionando = true;

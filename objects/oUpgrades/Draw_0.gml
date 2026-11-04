@@ -5,10 +5,8 @@ desenha_linha();
 
 if (ativo)
 {
-     // Desenha a sprite normal da habilidade
-    
-    // Opcional: Desenhar o nome ou nível da habilidade aqui
-    draw_text(x, y - 45, "Habilidade Ativa");
+    // Desenha a sprite normal da habilidade
+   // draw_text(x, y - 45, "Habilidade Ativa");
 }
     
 //var varaivel = variable_global_get(id_upgrade);

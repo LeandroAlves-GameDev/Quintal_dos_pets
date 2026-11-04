@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"Devonshire_Waltz_Moderato",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":0,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":350.53714,
+  "exportDir":"",
+  "name":"Devonshire_Waltz_Moderato",
+  "parent":{
+    "name":"Sounds",
+    "path":"folders/Sounds.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"Devonshire_Waltz_Moderato.mp3",
+  "volume":1.0,
+}
